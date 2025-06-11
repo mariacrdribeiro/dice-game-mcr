@@ -13,7 +13,7 @@ Follow these steps to get the Dice Game up and running on your local machine.
 - Node.js **v24**
 - Go **1.20+**
 
-### Backend Setup
+### 🚀 Backend Setup
 
 1.  Navigate to the backend directory:
     ```bash
@@ -25,9 +25,7 @@ Follow these steps to get the Dice Game up and running on your local machine.
     ```
     The backend server should now be running, on `http://localhost:8080`.
 
-### Frontend Setup
-
-### Requires node V24
+### 🚀 Frontend Setup
 
 1.  Navigate to the frontend directory:
     ```

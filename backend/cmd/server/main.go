@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/rs/cors"
 	"github.com/mariacrdribeiro/dice-game-mcr/backend/internal/api"
+	"github.com/rs/cors"
 )
 
 func main() {
@@ -17,6 +17,7 @@ func main() {
 	r.HandleFunc("/play", api.HandlePlay).Methods("POST")
 	r.HandleFunc("/endplay/{clientId}", api.HandleEndPlay).Methods("POST")
 	r.HandleFunc("/wallet/add", api.HandleAddFunds).Methods("POST")
+	r.HandleFunc("/play/last-results", api.HandleLastRolls).Methods("GET")
 
 	c := cors.New(cors.Options{
 		AllowedOrigins: []string{"http://localhost:5173"},
@@ -24,8 +25,8 @@ func main() {
 		AllowedHeaders: []string{"Content-Type"},
 	})
 
-	handler := c.Handler(r) 
+	handler := c.Handler(r)
 
 	log.Println("Server running on :8080")
-	log.Fatal(http.ListenAndServe(":8080", handler)) 
+	log.Fatal(http.ListenAndServe(":8080", handler))
 }

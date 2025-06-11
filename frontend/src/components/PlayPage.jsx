@@ -14,18 +14,39 @@ export default function PlayPage() {
   const [showTooltip, setShowTooltip] = useState(false);
   const clientId = localStorage.getItem("clientId");
   const diceEmojis = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+  const [lastRolls, setLastRolls] = useState([]);
 
   useEffect(() => {
     if (!clientId) navigate("/");
     else fetchBalance();
+    fetchLastRolls();
   }, [clientId]);
-
+  const fetchLastRolls = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/play/last-results");
+      if (response.ok) {
+        const data = await response.json();
+        if (data.message) {
+          // When no rolls recorded yet
+          setLastRolls([]);
+        } else {
+          setLastRolls(data);
+        }
+      } else {
+        const data = await response.json();
+        console.log(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const fetchBalance = async () => {
     try {
       const response = await fetch(`http://localhost:8080/wallet/${clientId}`);
       if (response.ok) {
         const data = await response.json();
         setBalance(parseFloat(data.balance).toFixed(2));
+        fetchLastRolls();
       } else {
         const data = await response.json();
         setMessage(data.message || "Failed to fetch balance");
@@ -66,7 +87,7 @@ export default function PlayPage() {
           }. You ${data.result.toUpperCase()}!`
         );
         setAmount("");
-        await fetchBalance();
+        fetchBalance();
       } else {
         const data = await response.json();
         setMessage(data.message || "Play failed.");
@@ -285,6 +306,26 @@ export default function PlayPage() {
           >
             Add Funds
           </button>
+        </div>
+      </div>
+      <div className="mt-4">
+        <h3 className="text-yellow-900 text-center font-semibold mb-2">
+          Last Rolls:
+        </h3>
+        <div className="flex space-x-2 overflow-x-auto">
+          {lastRolls.length > 0 ? (
+            lastRolls.map((roll, index) => (
+              <div
+                key={index}
+                className={`px-3 py-1 rounded-full text-white font-bold text-sm
+            ${roll % 2 == 0 ? "bg-green-500" : "bg-red-500"}`}
+              >
+                {roll}
+              </div>
+            ))
+          ) : (
+            <p className="text-gray-500 italic">No rolls yet</p>
+          )}
         </div>
       </div>
     </div>

@@ -133,3 +133,17 @@ func HandleAddFunds(w http.ResponseWriter, r *http.Request) {
 		"balance": newBalance,
 	})
 }
+func HandleLastRolls(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	if len(lastResults) == 0 {
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(map[string]string{
+			"message": "No rolls recorded yet",
+		})
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(lastResults)
+}

@@ -9,8 +9,10 @@ import (
 )
 
 var (
-	mu      sync.Mutex
-	players = make(map[string]*Player)
+	mu          sync.Mutex
+	players     = make(map[string]*Player)
+	lastResults []string
+	maxResults  = 10
 )
 
 func init() {
@@ -69,6 +71,11 @@ func StartPlay(clientID string, amount float64, betType string) (int, string, er
 	result := "lose"
 	if (dice%2 == 0 && betType == "even") || (dice%2 != 0 && betType == "odd") {
 		result = "win"
+	}
+	lastResults = append(lastResults, fmt.Sprintf("%d", dice))
+
+	if len(lastResults) > maxResults {
+		lastResults = lastResults[1:]
 	}
 	fmt.Printf("StartPlay: result %s\n", result)
 
