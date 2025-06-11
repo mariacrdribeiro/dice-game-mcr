@@ -1,6 +1,6 @@
 # Dice Game MCR
 
-A simple dice game built with a **React** frontend and a **Go** backend.
+A simple dice game built with a **React+Tailwind** frontend and a **Go** backend.
 
 ---
 
