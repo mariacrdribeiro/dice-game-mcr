@@ -1,30 +1,33 @@
 package api
 
+type RegisterRequest struct {
+	ClientID string  `json:"clientId"`
+	Balance  float64 `json:"balance"`
+}
 type BetRequest struct {
-	ClientID string `json:"clientId"`
-	Amount   int    `json:"amount"`
-	BetType  string `json:"betType"`
+	ClientID string  `json:"clientId"`
+	Amount   float64 `json:"amount"`
+	BetType  string  `json:"betType"`
 }
 
 type BetResult struct {
 	DiceNumber int    `json:"diceNumber"`
-	Result     string `json:"result"` 
+	Result     string `json:"result"`
 }
 
 type AddFundsRequest struct {
-	ClientID string `json:"clientId"`
-	Amount   int    `json:"amount"`
+	ClientID string  `json:"clientId"`
+	Amount   float64 `json:"amount"`
 }
 
 type Play struct {
-    Amount  int
-    BetType string
-    Active  bool
+	Amount  float64
+	BetType string
+	Active  bool
 	Result  string
 }
 
 type Player struct {
-    Balance int
-    Play    *Play
+	Balance float64
+	Play    *Play
 }
-

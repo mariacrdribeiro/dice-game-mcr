@@ -66,7 +66,7 @@ function LandingPage() {
   return (
     <div className="h-screen w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex">
       <div className="w-1/2 flex flex-col justify-center items-center px-12">
-        <h1 className="text-white text-6xl font-extrabold mb-6 text-center">
+        <h1 className="text-white text-7xl font-extrabold mb-6 text-center">
           Welcome to Dice Game!
         </h1>
         <p className="text-white text-xl max-w-md text-center">
@@ -75,41 +75,53 @@ function LandingPage() {
         </p>
       </div>
 
-      {/* Right side */}
       <div className="w-1/2 flex justify-center items-center p-8">
         <div className="w-full max-w-md bg-white bg-opacity-20 backdrop-blur-md rounded-3xl shadow-xl p-6">
-          {/* Tabs */}
-          <div className="flex mb-4 rounded-xl overflow-hidden">
+          <div className="relative flex mb-4 rounded-xl overflow-hidden bg-indigo-100">
+            <div
+              className="absolute top-0 bottom-0 w-1/2 bg-white rounded-xl shadow transition-transform duration-300 ease-in-out"
+              style={{
+                transform:
+                  activeTab === "register"
+                    ? "translateX(0%)"
+                    : "translateX(100%)",
+              }}
+            />
+
             <button
               onClick={() => setActiveTab("register")}
-              className={`flex-1 px-4 py-2 font-semibold transition ${
+              className={`relative flex-1 px-4 py-2 font-semibold text-indigo-600 transition-colors duration-300 ${
                 activeTab === "register"
-                  ? "bg-white text-indigo-600 shadow"
-                  : "bg-indigo-100 text-indigo-700 hover:bg-white"
+                  ? "text-indigo-600"
+                  : "text-indigo-700 hover:text-indigo-900"
               }`}
             >
               Register
             </button>
+
             <button
               onClick={() => setActiveTab("login")}
-              className={`flex-1 px-4 py-2 font-semibold transition ${
+              className={`relative flex-1 px-4 py-2 font-semibold text-indigo-600 transition-colors duration-300 ${
                 activeTab === "login"
-                  ? "bg-white text-indigo-600 shadow"
-                  : "bg-indigo-100 text-indigo-700 hover:bg-white"
+                  ? "text-indigo-600"
+                  : "text-indigo-700 hover:text-indigo-900"
               }`}
             >
               Login
             </button>
           </div>
 
-          {/* Form */}
-          <div className="space-y-4">
+          <div
+            key={activeTab}
+            className="space-y-4 transition-opacity duration-300 ease-in-out"
+            style={{ opacity: 1 }}
+          >
             <input
               type="text"
               placeholder="Enter username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 rounded-full text-indigo-600 font-semibold focus:outline-none"
+              className="w-full px-4 py-3 rounded-full text-indigo-600 font-semibold focus:outline-none border border-indigo-600"
             />
 
             {activeTab === "register" && (
@@ -118,7 +130,7 @@ function LandingPage() {
                 placeholder="Enter balance"
                 value={balance}
                 onChange={(e) => setBalance(e.target.value)}
-                className="w-full px-4 py-3 rounded-full text-indigo-600 font-semibold focus:outline-none"
+                className="w-full px-4 py-3 rounded-full text-indigo-600 font-semibold focus:outline-none border border-indigo-600"
               />
             )}
 

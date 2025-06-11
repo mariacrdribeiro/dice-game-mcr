@@ -10,10 +10,6 @@ import (
 )
 
 func HandleRegister(w http.ResponseWriter, r *http.Request) {
-	type RegisterRequest struct {
-		ClientID string `json:"clientId"`
-		Balance  int    `json:"balance"`
-	}
 
 	var req RegisterRequest
 
@@ -58,7 +54,7 @@ func HandleWallet(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]int{"balance": balance})
+	json.NewEncoder(w).Encode(map[string]float64{"balance": balance})
 }
 
 func HandlePlay(w http.ResponseWriter, r *http.Request) {
@@ -114,10 +110,6 @@ func HandleEndPlay(w http.ResponseWriter, r *http.Request) {
 }
 
 func HandleAddFunds(w http.ResponseWriter, r *http.Request) {
-	type AddFundsRequest struct {
-		ClientID string `json:"clientId"`
-		Amount   int    `json:"amount"`
-	}
 
 	var req AddFundsRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {

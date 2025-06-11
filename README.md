@@ -8,6 +8,11 @@ A simple dice game built with a **React** frontend and a **Go** backend.
 
 Follow these steps to get the Dice Game up and running on your local machine.
 
+## ⚙️ Requirements
+
+- Node.js **v24**
+- Go **1.20+**
+
 ### Backend Setup
 
 1.  Navigate to the backend directory:
@@ -22,12 +27,19 @@ Follow these steps to get the Dice Game up and running on your local machine.
 
 ### Frontend Setup
 
+### Requires node V24
+
 1.  Navigate to the frontend directory:
     ```
     cd frontend
     ```
 2.  Start the React development server:
-    ```
-    npm run dev
-    ```
-    This will open the application in your web browser, at `http://localhost:5173`
+
+````
+  npm i
+  ```
+  ```
+  npm run dev
+  ```
+  This will open the application in your web browser, at `http://localhost:5173`
+````

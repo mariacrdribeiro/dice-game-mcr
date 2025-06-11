@@ -25,7 +25,7 @@ export default function PlayPage() {
       const response = await fetch(`http://localhost:8080/wallet/${clientId}`);
       if (response.ok) {
         const data = await response.json();
-        setBalance(data.balance);
+        setBalance(parseFloat(data.balance).toFixed(2));
       } else {
         const data = await response.json();
         setMessage(data.message || "Failed to fetch balance");
@@ -89,7 +89,7 @@ export default function PlayPage() {
 
       if (response.ok) {
         const data = await response.json();
-        setBalance(data.balance);
+        setBalance(parseFloat(data.balance).toFixed(2));
         setMessage(`✅ Play ended.`);
       } else {
         const data = await response.json();
@@ -119,7 +119,7 @@ export default function PlayPage() {
 
       if (response.ok) {
         const data = await response.json();
-        setBalance(data.balance);
+        setBalance(parseFloat(data.balance).toFixed(2));
         setFundsToAdd("");
         setMessage(`💰 Added ${fundsToAdd} € successfully!`);
       } else {
@@ -204,8 +204,18 @@ export default function PlayPage() {
             placeholder="Enter amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="w-full mb-4 px-4 py-2 border border-indigo-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            onKeyDown={(e) => {
+              if (["e", "E", "+", "-"].includes(e.key)) {
+                e.preventDefault();
+              }
+            }}
+            min="0"
+            step="0.01"
+            inputMode="decimal"
+            className="w-full mb-6 px-5 py-3 border border-indigo-300 rounded-lg shadow-sm placeholder-indigo-400
+     focus:outline-none focus:ring-3 focus:ring-indigo-400 focus:border-indigo-600 transition"
           />
+
           <select
             value={betType}
             onChange={(e) => setBetType(e.target.value)}
@@ -256,8 +266,16 @@ export default function PlayPage() {
             placeholder="Amount to add"
             value={fundsToAdd}
             onChange={(e) => setFundsToAdd(e.target.value)}
+            onKeyDown={(e) => {
+              if (["e", "E", "+", "-"].includes(e.key)) {
+                e.preventDefault();
+              }
+            }}
+            min="0"
+            step="0.01"
+            inputMode="decimal"
             className="w-full mb-6 px-5 py-3 border border-indigo-300 rounded-lg shadow-sm placeholder-indigo-400
-               focus:outline-none focus:ring-3 focus:ring-indigo-400 focus:border-indigo-600 transition"
+     focus:outline-none focus:ring-3 focus:ring-indigo-400 focus:border-indigo-600 transition"
           />
 
           <button
