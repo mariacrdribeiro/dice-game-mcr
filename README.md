@@ -1,15 +1,33 @@
-# dice-game-mcr
+# Dice Game MCR
 
-Simple Dice Game workflow React + GO
+A simple dice game built with a **React** frontend and a **Go** backend.
 
-## HOW TO USE
+---
 
-### BackEND
+## Getting Started
 
-#### 1 cd backend
+Follow these steps to get the Dice Game up and running on your local machine.
 
-#### 2go run cmd\server\main.go
+### Backend Setup
 
-### FrontEnd
+1.  Navigate to the backend directory:
+    ```bash
+    cd backend
+    ```
+2.  Run the Go server:
+    ```
+    go run cmd/server/main.go
+    ```
+    The backend server should now be running, on `http://localhost:8080`.
 
-#### 1 cd frontend npm run dev
+### Frontend Setup
+
+1.  Navigate to the frontend directory:
+    ```
+    cd frontend
+    ```
+2.  Start the React development server:
+    ```
+    npm run dev
+    ```
+    This will open the application in your web browser, at `http://localhost:5173`
