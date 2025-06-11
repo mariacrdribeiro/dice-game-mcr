@@ -33,14 +33,13 @@ Follow these steps to get the Dice Game up and running on your local machine.
     ```
 2.  Start the React development server:
 
-````
-  npm i
-  ```
-  ```
-  npm run dev
-  ```
-  This will open the application in your web browser, at `http://localhost:5173`
-````
+    ```
+    npm i
+    ```
+    ```
+    npm run dev
+    ```
+    This will open the application in your web browser, at `http://localhost:5173`
 
 
 ### Pictures 
