@@ -41,3 +41,10 @@ Follow these steps to get the Dice Game up and running on your local machine.
   ```
   This will open the application in your web browser, at `http://localhost:5173`
 ````
+
+
+### Pictures 
+![image](https://github.com/user-attachments/assets/ae9c3a05-1a7f-40c8-9198-7d99d78461be)
+
+![image](https://github.com/user-attachments/assets/83b9842b-7b4f-492f-a88a-ab59a779d5be)
+
