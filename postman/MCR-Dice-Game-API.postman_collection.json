@@ -130,6 +130,26 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Last-Rolls",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/play/last-results",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"play",
+						"last-results"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
